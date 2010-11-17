@@ -4,13 +4,12 @@
 #
 #-------------------------------------------------
 
-QT       += core
-
-QT       -= gui
-
 TARGET = felChess
 CONFIG   += console
 CONFIG   -= app_bundle
+
+TRANSLATIONS = felchess_en.ts \
+    felchess_cs.ts
 
 TEMPLATE = app
 
