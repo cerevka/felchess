@@ -2,6 +2,7 @@
 #include <QtGui>
 #include <QTranslator>
 #include <QDebug>
+#include <QFile>
 
 #include "globals.h"
 
@@ -20,12 +21,17 @@ int main(int argc, char *argv[])
     // Inicializace Qt.
     QApplication app(argc, argv);
 
+    // Zkontroluje se existence konfiguracniho souboru a jinak se vytvori z resource.
+    if (!QFile::exists("config.ini")) {
+        QFile::copy(":/config.ini", "config.ini");
+    }
+
     // Nacte se konfigurace.
-    Globals::settings = new QSettings("../data/config.ini", QSettings::IniFormat);
+    Globals::settings = new QSettings("config.ini", QSettings::IniFormat);
 
     // Inicializuje se translator.
     QTranslator translator;
-    translator.load("../data/felchess_" + Globals::settings->value("language/default_language").toString() + ".qm");
+    translator.load(":/lang/felchess_" + Globals::settings->value("language/default_language").toString() + ".qm");
     app.installTranslator(&translator);
 
 

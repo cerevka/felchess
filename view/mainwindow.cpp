@@ -2,37 +2,62 @@
 
 MainWindow::MainWindow()
 {
-    createMenuBar();
+    createActions();
+    createMenus();
 
     setWindowTitle(tr("windowTitle"));
     setFixedHeight(700);
     setFixedWidth(1000);
 }
 
-void MainWindow::createMenuBar()
+void MainWindow::createActions() {
+    // Polozky herniho menu.
+    newGameAct = new QAction(tr("newGame"), this);
+    newGameAct->setShortcut(tr("CTRL+N"));
+    newGameAct->setStatusTip(tr("newGameStatusTip"));
+    connect(newGameAct, SIGNAL(triggered()), this, SLOT(newGameSlot()));
+
+    exitAct = new QAction(tr("exitAct"), this);
+    exitAct->setShortcut(tr("CTRL+Q"));
+    exitAct->setStatusTip(tr("exitStatusTip"));
+    connect(exitAct, SIGNAL(triggered()), this, SLOT(exitSlot()));
+
+    // Polozky nastrojoveho menu.
+
+    // Vytvori se menu s vyberem jazyku.
+    QActionGroup * languageGroup = new QActionGroup(this);
+    languageGroup->addAction("en");
+    languageGroup->addAction("cs");
+
+    showSettingsAct = new QAction(tr("settingAct"), this);
+    connect(showSettingsAct, SIGNAL(triggered()), this, SLOT(switchLanguageSlot()));
+
+    // Polozky menu s napovedou.
+    showAboutAct = new QAction(tr("aboutAct"), this);
+    connect(showAboutAct, SIGNAL(triggered()), this, SLOT(showAboutSlot()));
+    showHelpAct = new QAction(tr("helpAct"), this);
+    connect(showHelpAct, SIGNAL(triggered()), this, SLOT(showHelpSlot()));
+}
+
+void MainWindow::createMenus()
 {
-   // Nadefinovani herniho menu.
-   gameMenu = menuBar()->addMenu(tr("gameMenu"));
-   newGameAct = gameMenu->addAction(tr("newGameAct"));
-   exitAct = gameMenu->addAction(tr("exitAct"));
+    // Nadefinovani herniho menu.
+    gameMenu = menuBar()->addMenu(tr("gameMenu"));
+    gameMenu->addAction(newGameAct);
+    gameMenu->addSeparator();
+    gameMenu->addAction(exitAct);
 
-   // Nadefinovani nastrojoveho menu.
-   toolMenu = menuBar()->addMenu(tr("toolMenu"));
-   switchLanguageAct = toolMenu->addAction(tr("languageAct"));
-   showSettingsAct = toolMenu->addAction(tr("settingAct"));
+    // Nadefinovani nastrojoveho menu.
+    toolMenu = menuBar()->addMenu(tr("toolMenu"));
 
-   // Nadefinovani menu s napovedou.
-   helpMenu = menuBar()->addMenu(tr("helpMenu"));
-   showAboutAct = helpMenu->addAction(tr("aboutAct"));
-   showHelpAct = helpMenu->addAction(tr("helpAct"));
+    toolMenu->addMenu(tr("languageAct"));
+    toolMenu->addAction(showSettingsAct);
 
-   // Napojeni akci na sloty.
-   connect(newGameAct, SIGNAL(triggered()), this, SLOT(newGameSlot()));
-   connect(exitAct, SIGNAL(triggered()), this, SLOT(exitSlot()));
-   connect(switchLanguageAct, SIGNAL(triggered()), this, SLOT(switchLanguageSlot()));
-   connect(showSettingsAct, SIGNAL(triggered()), this, SLOT(switchLanguageSlot()));
-   connect(showAboutAct, SIGNAL(triggered()), this, SLOT(showAboutSlot()));
-   connect(showHelpAct, SIGNAL(triggered()), this, SLOT(showHelpSlot()));
+    // Nadefinovani menu s napovedou.
+    helpMenu = menuBar()->addMenu(tr("helpMenu"));
+    helpMenu->addAction(showHelpAct);
+    helpMenu->addSeparator();
+    helpMenu->addAction(showAboutAct);
 }
 
 void MainWindow::newGameSlot()

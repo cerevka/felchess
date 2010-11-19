@@ -1,1 +1,9 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/lang">
+        <file>felchess_cs.qm</file>
+        <file>felchess_en.qm</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>config.ini</file>
+    </qresource>
+</RCC>

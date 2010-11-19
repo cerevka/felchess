@@ -16,6 +16,9 @@ public:
       */
     static MainWindow * mainWindow;
 
+    /**
+      * Instance nastaveni z config.ini nacitaneho pri bootu aplikace.
+      */
     static QSettings * settings;
 
 };

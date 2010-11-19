@@ -23,7 +23,12 @@ private:
     /**
       * Vytvoreni menu hlavniho okna.
       */
-    void createMenuBar();
+    void createMenus();
+
+    /**
+      * Vytvoreni polozek hlavniho menu.
+      */
+    void createActions();
 
     QMenu * gameMenu;
     QMenu * toolMenu;
@@ -32,7 +37,8 @@ private:
     QAction * newGameAct;
     QAction * exitAct;
 
-    QAction * switchLanguageAct;
+    QList<QAction> languageList;
+
     QAction * showSettingsAct;
 
     QAction * showAboutAct;
