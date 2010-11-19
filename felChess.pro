@@ -25,3 +25,6 @@ HEADERS += \
     view/mainwindow.h \
     controller/game/game.h \
     controller/network/network.h
+
+RESOURCES += \
+    resource.qrc
