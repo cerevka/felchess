@@ -24,7 +24,8 @@ HEADERS += \
     model/chessboard.h \
     view/mainwindow.h \
     controller/game/game.h \
-    controller/network/network.h
+    controller/network/network.h \
+    globals.h
 
 RESOURCES += \
     resource.qrc

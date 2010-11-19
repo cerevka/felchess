@@ -1,10 +1,13 @@
 #include <QtCore>
 #include <QtGui>
 #include <QTranslator>
-#include <QSettings>
 #include <QDebug>
 
-#include "view/mainwindow.h"
+#include "globals.h"
+
+// Nadefinovani referenci ze tridy Globals.
+MainWindow * Globals::mainWindow = NULL;
+QSettings * Globals::settings = NULL;
 
 /**
   * Vstupni bod do systemu.
@@ -18,22 +21,22 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     // Nacte se konfigurace.
-    QSettings * settings = new QSettings("../data/config.ini", QSettings::IniFormat);
+    Globals::settings = new QSettings("../data/config.ini", QSettings::IniFormat);
 
     // Inicializuje se translator.
     QTranslator translator;
-    translator.load("../data/felchess_" + settings->value("language/default_language").toString() + ".qm");
+    translator.load("../data/felchess_" + Globals::settings->value("language/default_language").toString() + ".qm");
     app.installTranslator(&translator);
 
 
     // Vytvori se okno aplikace.
-    MainWindow * mainWindow = new MainWindow();
-    mainWindow->show();
+    Globals::mainWindow = new MainWindow();
+    Globals::mainWindow->show();
 
     // Spusteni Qt.
     return app.exec();
 
-    // Uvolneni pameti alokovanych objektu.
-    delete settings;
-    delete mainWindow;
+    // Uvolneni pameti alokovane ve staticke tride Globals.
+    delete Globals::settings;
+    delete Globals::mainWindow;
 }
