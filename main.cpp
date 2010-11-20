@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 
     // Inicializuje se translator.
     QTranslator translator;
-    translator.load(":/lang/felchess_" + Globals::settings->value("language/default_language").toString() + ".qm");
+    translator.load(":/lang/felchess_" + Globals::settings->value("language/defaultLanguage").toString() + ".qm");
     app.installTranslator(&translator);
 
 
@@ -43,6 +43,6 @@ int main(int argc, char *argv[])
     return app.exec();
 
     // Uvolneni pameti alokovane ve staticke tride Globals.
-    delete Globals::settings;
+    //delete Globals::settings;
     delete Globals::mainWindow;
 }

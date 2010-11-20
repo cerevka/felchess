@@ -1,8 +1,11 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
+class MainWindow;
+
 #include <QSettings>
 #include "view/mainwindow.h"
+
 
 /**
   * Specialni trida udrzujici ukazatele na singletonove tridy.

@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 #include <QtGui>
+#include <QDir>
+#include <QStringList>
+
+#include "../globals.h"
 
 /**
   * Hlavni okno programu, ktere zajistuje konstru GUI.
@@ -42,7 +46,9 @@ private:
     QAction * newGameAct;
     QAction * exitAct;
 
-    QList<QAction> languageList;
+    QMenu * languageMenu;
+    QActionGroup * languageActGroup;
+    QList<QAction *> * languageActList;
 
     QAction * showSettingsAct;
 
@@ -64,7 +70,7 @@ private slots:
     /**
       * Slot, ktery zpracovava prepnuti jazyka.
       */
-    void switchLanguageSlot(void);
+    void switchLanguageSlot(QAction *);
 
     /**
       * Slot, ktery zpracovava vstup do nastaveni.
