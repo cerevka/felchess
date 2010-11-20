@@ -15,6 +15,11 @@ class Globals
 public:
 
     /**
+      * Instance aplikace.
+      */
+    static QApplication * application;
+
+    /**
       * Instance hlavniho okna aplikace.
       */
     static MainWindow * mainWindow;

@@ -7,6 +7,7 @@
 #include "globals.h"
 
 // Nadefinovani referenci ze tridy Globals.
+QApplication * Globals::application = NULL;
 MainWindow * Globals::mainWindow = NULL;
 QSettings * Globals::settings = NULL;
 
@@ -20,6 +21,7 @@ int main(int argc, char *argv[])
 {
     // Inicializace Qt.
     QApplication app(argc, argv);
+    Globals::application = &app;
 
     // Zkontroluje se existence konfiguracniho souboru a jinak se vytvori z resource.
     if (!QFile::exists("config.ini")) {

@@ -5,27 +5,24 @@ MainWindow::MainWindow(QWidget * parent) : QMainWindow(parent)
     createActions();
     createMenus();
 
-    setWindowTitle(tr("windowTitle"));
     setFixedHeight(700);
     setFixedWidth(1000);
+
+    retranslate();
 }
 
-MainWindow::~MainWindow()
+MainWindow::~MainWindow(void)
 {
 
 }
 
-void MainWindow::createActions()
+void MainWindow::createActions(void)
 {
     // Polozky herniho menu.
-    newGameAct = new QAction(tr("newGame"), this);
-    newGameAct->setShortcut(tr("CTRL+N"));
-    newGameAct->setStatusTip(tr("newGameStatusTip"));
+    newGameAct = new QAction(this);
     connect(newGameAct, SIGNAL(triggered()), this, SLOT(newGameSlot()));
 
-    exitAct = new QAction(tr("exitAct"), this);
-    exitAct->setShortcut(tr("CTRL+Q"));
-    exitAct->setStatusTip(tr("exitStatusTip"));
+    exitAct = new QAction(this);
     connect(exitAct, SIGNAL(triggered()), this, SLOT(exitSlot()));
 
     // Polozky nastrojoveho menu.    
@@ -63,33 +60,34 @@ void MainWindow::createActions()
         }
     }
 
-    showSettingsAct = new QAction(tr("settingAct"), this);
+    showSettingsAct = new QAction(this);
     connect(showSettingsAct, SIGNAL(triggered()), this, SLOT(showSettingsSlot()));
 
     // Polozky menu s napovedou.
-    showAboutAct = new QAction(tr("aboutAct"), this);
+    showAboutAct = new QAction(this);
     connect(showAboutAct, SIGNAL(triggered()), this, SLOT(showAboutSlot()));
-    showHelpAct = new QAction(tr("helpAct"), this);
+    showHelpAct = new QAction(this);
     connect(showHelpAct, SIGNAL(triggered()), this, SLOT(showHelpSlot()));
 }
 
-void MainWindow::createMenus()
+void MainWindow::createMenus(void)
 {
     // Nadefinovani herniho menu.
-    gameMenu = menuBar()->addMenu(tr("gameMenu"));
+    gameMenu = new QMenu(this);
+    menuBar()->addMenu(gameMenu);
     gameMenu->addAction(newGameAct);
     gameMenu->addSeparator();
     gameMenu->addAction(exitAct);
 
     // Nadefinovani nastrojoveho menu.
-    toolMenu = menuBar()->addMenu(tr("toolMenu"));
+    toolMenu = new QMenu(this);
+    menuBar()->addMenu(toolMenu);
 
-    languageMenu = new QMenu(tr("languageMenu"), this);
+    languageMenu = new QMenu(this);
     toolMenu->addMenu(languageMenu);
 
     for (int i = 0; i < languageActList->size(); i++)
     {
-        //langAction = languageActList->at(i);
         languageMenu->addAction(languageActList->at(i));
 
     }
@@ -97,18 +95,40 @@ void MainWindow::createMenus()
     toolMenu->addAction(showSettingsAct);
 
     // Nadefinovani menu s napovedou.
-    helpMenu = menuBar()->addMenu(tr("helpMenu"));
+    helpMenu = new QMenu(this);
+    menuBar()->addMenu(helpMenu);
     helpMenu->addAction(showHelpAct);
     helpMenu->addSeparator();
     helpMenu->addAction(showAboutAct);
 }
 
-void MainWindow::newGameSlot()
+void MainWindow::retranslate(void) {
+    setWindowTitle(tr("windowTitle"));
+    gameMenu->setTitle(tr("gameMenu"));
+    toolMenu->setTitle(tr("toolMenu"));
+    languageMenu->setTitle(tr("languageMenu"));
+    helpMenu->setTitle(tr("helpMenu"));
+
+    newGameAct->setText(tr("newGame"));
+    newGameAct->setShortcut(tr("CTRL+N"));
+    newGameAct->setStatusTip(tr("newGameStatusTip"));
+
+    exitAct->setText(tr("exitAct"));
+    exitAct->setShortcut(tr("CTRL+Q"));
+    exitAct->setStatusTip(tr("exitStatusTip"));
+
+    showSettingsAct->setText(tr("settingAct"));
+
+    showAboutAct->setText(tr("aboutAct"));
+    showHelpAct->setText(tr("helpAct"));
+}
+
+void MainWindow::newGameSlot(void)
 {
 
 }
 
-void MainWindow::exitSlot()
+void MainWindow::exitSlot(void)
 {
     close();
 }
@@ -117,22 +137,27 @@ void MainWindow::switchLanguageSlot(QAction * action)
 {
     // Nova konfigurace se ulozi do configu.
     Globals::settings->setValue("language/defaultLanguage", action->data().toString());
-    QMessageBox messageBox;
-    messageBox.setText(tr("switchLanguageMessageBox"));
-    messageBox.exec();
+
+    // Vytvori se novy translator a zaregistruje se.
+    QTranslator translator;
+    translator.load(":/lang/felchess_" + Globals::settings->value("language/defaultLanguage").toString() + ".qm");
+    Globals::application->installTranslator(&translator);
+
+    // Prelozi se cela aplikace do zvoleneho jazyka.
+    retranslate();
 }
 
-void MainWindow::showSettingsSlot()
+void MainWindow::showSettingsSlot(void)
 {
 
 }
 
-void MainWindow::showAboutSlot()
+void MainWindow::showAboutSlot(void)
 {
 
 }
 
-void MainWindow::showHelpSlot()
+void MainWindow::showHelpSlot(void)
 {
 
 }

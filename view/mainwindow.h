@@ -25,19 +25,24 @@ public:
     /**
       * Destruktor okna.
       */
-    virtual ~MainWindow();
+    virtual ~MainWindow(void);
 
 private:
 
     /**
       * Vytvoreni menu hlavniho okna.
       */
-    void createMenus();
+    void createMenus(void);
 
     /**
       * Vytvoreni polozek hlavniho menu.
       */
-    void createActions();
+    void createActions(void);
+
+    /**
+      * Nacte preklady ke vsem komponentam.
+      */
+    void retranslate(void);
 
     QMenu * gameMenu;
     QMenu * toolMenu;
