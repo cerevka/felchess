@@ -40,13 +40,18 @@ void MainWindow::createActions(void)
     // Generovani prepinacu jazyku.
     QMutableStringListIterator i(fileNames);
     QAction * langAction;
+    QTranslator tempTranslator;
     while (i.hasNext())
     {
         i.next();
         // Vytvori se tlacitko pro volbu jazyka a ulozi se do seznamu.
-        langAction = new QAction(tr(i.value().toAscii()), this);
+        langAction = new QAction(this);
         // Vysekne se jen oznaceni jazykove verze.
         langAction->setData(i.value().mid(9, 2));
+
+
+        tempTranslator.load(":/lang/felchess_" + langAction->data().toString()  + ".qm");
+        langAction->setText(tempTranslator.translate("MainWindow", "dictionaryName"));
 
         langAction->setCheckable(true);
 
