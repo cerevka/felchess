@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 
-MainWindow::MainWindow()
+MainWindow::MainWindow(QWidget * parent) : QMainWindow(parent)
 {
     createActions();
     createMenus();
@@ -8,6 +8,10 @@ MainWindow::MainWindow()
     setWindowTitle(tr("windowTitle"));
     setFixedHeight(700);
     setFixedWidth(1000);
+}
+
+MainWindow::~MainWindow() {
+
 }
 
 void MainWindow::createActions() {

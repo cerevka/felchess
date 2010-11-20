@@ -1,10 +1,16 @@
 #ifndef CHESSBOARD_H
 #define CHESSBOARD_H
 
-class Chessboard
+#include <QObject>
+
+class Chessboard : QObject
 {
+    Q_OBJECT
+
 public:
-    Chessboard();
+    Chessboard(QObject * parent = 0);
+
+    virtual ~Chessboard();
 };
 
 #endif // CHESSBOARD_H

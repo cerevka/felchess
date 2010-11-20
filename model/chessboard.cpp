@@ -1,5 +1,10 @@
 #include "chessboard.h"
 
-Chessboard::Chessboard()
+Chessboard::Chessboard(QObject *parent) : QObject(parent)
 {
+}
+
+Chessboard::~Chessboard()
+{
+
 }

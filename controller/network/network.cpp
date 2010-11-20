@@ -1,5 +1,10 @@
 #include "network.h"
 
-Network::Network()
+Network::Network(QObject *parent) : QObject(parent)
 {
+}
+
+Network::~Network()
+{
+
 }

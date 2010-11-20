@@ -1,10 +1,15 @@
 #ifndef GAME_H
 #define GAME_H
 
-class game
+#include <QObject>
+
+class Game : public QObject
 {
+    Q_OBJECT
+
 public:
-    game();
+    Game(QObject * parent = 0);
+    virtual ~Game();
 };
 
 #endif // GAME_H

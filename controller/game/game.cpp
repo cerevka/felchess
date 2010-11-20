@@ -1,5 +1,10 @@
 #include "game.h"
 
-game::game()
+Game::Game(QObject *parent) : QObject(parent)
 {
+}
+
+Game::~Game()
+{
+
 }

@@ -16,7 +16,12 @@ public:
     /**
       * Vytvoreni noveho okna.
       */
-    MainWindow();
+    MainWindow(QWidget * parent = 0);
+
+    /**
+      * Destruktor okna.
+      */
+    virtual ~MainWindow();
 
 private:
 
