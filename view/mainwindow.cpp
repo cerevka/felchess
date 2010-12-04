@@ -4,9 +4,9 @@ MainWindow::MainWindow(QWidget * parent) : QMainWindow(parent)
 {
     createActions();
     createMenus();
+    statusBar()->show();
 
-    setFixedHeight(700);
-    setFixedWidth(1000);
+    resize(500, 300);
 
     retranslate();
 }
@@ -109,7 +109,8 @@ void MainWindow::createMenus(void)
 
 void MainWindow::retranslate(void) {
     setWindowTitle(tr("windowTitle"));
-    gameMenu->setTitle(tr("gameMenu"));
+
+    gameMenu->setTitle(tr("gameMenu"));   
     toolMenu->setTitle(tr("toolMenu"));
     languageMenu->setTitle(tr("languageMenu"));
     helpMenu->setTitle(tr("helpMenu"));
@@ -123,9 +124,13 @@ void MainWindow::retranslate(void) {
     exitAct->setStatusTip(tr("exitStatusTip"));
 
     showSettingsAct->setText(tr("settingAct"));
+    showSettingsAct->setStatusTip(tr("settingStatusTip"));
 
     showAboutAct->setText(tr("aboutAct"));
+    showAboutAct->setStatusTip(tr("aboutStatusTip"));
+
     showHelpAct->setText(tr("helpAct"));
+    showHelpAct->setStatusTip(tr("helpStatusTip"));
 }
 
 void MainWindow::newGameSlot(void)

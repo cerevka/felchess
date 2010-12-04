@@ -8,7 +8,7 @@ class Network : QObject
     Q_OBJECT
 
 public:
-    Network(QObject * parent = 0);
+    explicit Network(QObject * parent = 0);
     virtual ~Network();
 };
 

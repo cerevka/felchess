@@ -18,14 +18,20 @@ SOURCES += main.cpp \
     model/chessboard.cpp \
     view/mainwindow.cpp \
     controller/game/game.cpp \
-    controller/network/network.cpp
+    controller/network/network.cpp \
+    view/widgets/boardwidget.cpp \
+    view/widgets/infowidget.cpp \
+    view/widgets/chatwidget.cpp
 
 HEADERS += \
     model/chessboard.h \
     view/mainwindow.h \
     controller/game/game.h \
     controller/network/network.h \
-    globals.h
+    globals.h \
+    view/widgets/boardwidget.h \
+    view/widgets/infowidget.h \
+    view/widgets/chatwidget.h
 
 RESOURCES += \
     resource.qrc

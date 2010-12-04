@@ -8,7 +8,7 @@ class Chessboard : QObject
     Q_OBJECT
 
 public:
-    Chessboard(QObject * parent = 0);
+    explicit Chessboard(QObject * parent = 0);
 
     virtual ~Chessboard();
 };
