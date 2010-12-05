@@ -6,9 +6,16 @@ MainWindow::MainWindow(QWidget * parent) : QMainWindow(parent)
     createMenus();
     statusBar()->show();
 
-    resize(500, 300);
+    // Nastavi se centralni widget, hlavni okno si ho vezme do vlastnictvi.
+    CenterWidget * centerWidget = new CenterWidget(this);
+    setCentralWidget(centerWidget);
 
-    retranslate();
+    resize(this->sizeHint());
+
+    // Propoji se signal na preklad.
+    connect(this, SIGNAL(retranslateSignal()), this, SLOT(retranslateSlot()));
+
+    emit retranslateSignal();
 }
 
 MainWindow::~MainWindow(void)
@@ -66,7 +73,7 @@ void MainWindow::createActions(void)
     }
 
     showSettingsAct = new QAction(this);
-    connect(showSettingsAct, SIGNAL(triggered()), this, SLOT(showSettingsSlot()));
+    connect(showSettingsAct, SIGNAL(triggered(void)), this, SLOT(showSettingsSlot(void)));
 
     // Polozky menu s napovedou.
     showAboutAct = new QAction(this);
@@ -107,7 +114,7 @@ void MainWindow::createMenus(void)
     helpMenu->addAction(showAboutAct);
 }
 
-void MainWindow::retranslate(void) {
+void MainWindow::retranslateSlot(void) {
     setWindowTitle(tr("windowTitle"));
 
     gameMenu->setTitle(tr("gameMenu"));   
@@ -154,7 +161,7 @@ void MainWindow::switchLanguageSlot(QAction * action)
     Globals::application->installTranslator(&translator);
 
     // Prelozi se cela aplikace do zvoleneho jazyka.
-    retranslate();
+    emit retranslateSignal();
 }
 
 void MainWindow::showSettingsSlot(void)

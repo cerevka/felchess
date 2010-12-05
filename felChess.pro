@@ -4,6 +4,8 @@
 #
 #-------------------------------------------------
 
+QT += opengl
+
 TARGET = felChess
 CONFIG   += console
 CONFIG   -= app_bundle
@@ -21,7 +23,8 @@ SOURCES += main.cpp \
     controller/network/network.cpp \
     view/widgets/boardwidget.cpp \
     view/widgets/infowidget.cpp \
-    view/widgets/chatwidget.cpp
+    view/widgets/chatwidget.cpp \
+    view/widgets/centerwidget.cpp
 
 HEADERS += \
     model/chessboard.h \
@@ -31,7 +34,8 @@ HEADERS += \
     globals.h \
     view/widgets/boardwidget.h \
     view/widgets/infowidget.h \
-    view/widgets/chatwidget.h
+    view/widgets/chatwidget.h \
+    view/widgets/centerwidget.h
 
 RESOURCES += \
     resource.qrc

@@ -5,8 +5,10 @@
 #include <QtGui>
 #include <QDir>
 #include <QStringList>
+#include "view/widgets/centerwidget.h"
 
 #include "../globals.h"
+
 
 /**
   * Hlavni okno programu, ktere zajistuje konstru GUI.
@@ -19,6 +21,7 @@ public:
 
     /**
       * Vytvoreni noveho okna.
+      * @param * parent Ukazatel na rodice/vlastnika.
       */
     explicit MainWindow(QWidget * parent = 0);
 
@@ -39,11 +42,6 @@ private:
       */
     void createActions(void);
 
-    /**
-      * Nacte preklady ke vsem komponentam.
-      */
-    void retranslate(void);
-
     QMenu * gameMenu;
     QMenu * toolMenu;
     QMenu * helpMenu;
@@ -60,7 +58,19 @@ private:
     QAction * showAboutAct;
     QAction * showHelpAct;
 
+signals:
+
+    /**
+      * Signal k prelozeni aplikace.
+      */
+    void retranslateSignal(void);
+
 private slots:
+
+    /**
+      * Nacte preklady ke vsem komponentam.
+      */
+    void retranslateSlot(void);
 
     /**
       * Slot, ktery zpracovava zalozeni nove hry.
@@ -74,8 +84,9 @@ private slots:
 
     /**
       * Slot, ktery zpracovava prepnuti jazyka.
+      * @param * action Ukazatel na zvolenou akci (jazyk).
       */
-    void switchLanguageSlot(QAction *);
+    void switchLanguageSlot(QAction * action);
 
     /**
       * Slot, ktery zpracovava vstup do nastaveni.
