@@ -14,3 +14,8 @@ void Painter3D::paintTriangle()
     glEnd();
 
 }
+
+void Painter3D::drawChessboard()
+{
+
+}

@@ -21,3 +21,8 @@ void Painter::paintTriangle()
 {
     painter->paintTriangle();
 }
+
+void Painter::drawChessboard()
+{
+    painter->drawChessboard();
+}

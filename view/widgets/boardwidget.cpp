@@ -61,7 +61,8 @@ void BoardWidget::paintGL(void)
     // ... se vynuluje na jednotkovou.
     glLoadIdentity();
 
-    painter->paintTriangle();
+    //painter->paintTriangle();
+    painter->drawChessboard();
 }
 
 void BoardWidget::retranslateSlot(void)

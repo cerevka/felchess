@@ -12,6 +12,8 @@ public:
       * Kresleni trojuhlenika.
       */
     virtual void paintTriangle();
+
+    virtual void drawChessboard();
 };
 
 #endif // PAINTER3D_H

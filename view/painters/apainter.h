@@ -26,6 +26,11 @@ public:
       */
     virtual void paintTriangle() = 0;
 
+    /**
+      * Vykresleni sachovnice.
+      */
+    virtual void drawChessboard() = 0;
+
 protected:
 
     /**
