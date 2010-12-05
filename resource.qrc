@@ -6,4 +6,20 @@
     <qresource prefix="/">
         <file>config.ini</file>
     </qresource>
+    <qresource prefix="/pieces/white">
+        <file alias="archer">graphics/white/archer.svg</file>
+        <file alias="king">graphics/white/king.svg</file>
+        <file alias="knight">graphics/white/knight.svg</file>
+        <file alias="lady">graphics/white/lady.svg</file>
+        <file alias="pawn">graphics/white/pawn.svg</file>
+        <file alias="tower">graphics/white/tower.svg</file>
+    </qresource>
+    <qresource prefix="/pieces/black">
+        <file alias="archer">graphics/black/archer.svg</file>
+        <file alias="king">graphics/black/king.svg</file>
+        <file alias="knight">graphics/black/knight.svg</file>
+        <file alias="lady">graphics/black/lady.svg</file>
+        <file alias="pawn">graphics/black/pawn.svg</file>
+        <file alias="tower">graphics/black/tower.svg</file>
+    </qresource>
 </RCC>

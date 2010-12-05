@@ -16,7 +16,7 @@ BoardWidget::BoardWidget(QWidget *parent): QGLWidget(parent)
 BoardWidget::~BoardWidget(void)
 {
     // Znici se kreslitko vytvorene pri inicializaci OpenGL.
-    delete painter;
+    delete glPainter;
 
 }
 
@@ -32,8 +32,7 @@ void BoardWidget::initializeGL(void)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     // Vytvori se kreslitko.
-    painter = new Painter(this, Painter::MODE_2D);
-
+    glPainter = new Painter(this, Painter::MODE_2D);
 }
 
 void BoardWidget::resizeGL(int width, int height)
@@ -49,10 +48,14 @@ void BoardWidget::resizeGL(int width, int height)
     glLoadIdentity();
     // Prepne se zpet na matici pro transformaci objektu.
     glMatrixMode(GL_MODELVIEW);
+
+    resize(side, side);
 }
 
 void BoardWidget::paintGL(void)
 {
+    QPainter painter(this);
+
     // Vycisteni bufferu.
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -61,8 +64,37 @@ void BoardWidget::paintGL(void)
     // ... se vynuluje na jednotkovou.
     glLoadIdentity();
 
-    //painter->paintTriangle();
-    painter->drawChessboard();
+    glPainter->drawChessboard();
+
+    QSvgRenderer * renderer = new QSvgRenderer(QString(":/pieces/white/archer"));
+    painter.setRenderHint(QPainter::Antialiasing);
+
+    QPixmap pixmap(width()/8, height()/8);
+    pixmap.fill(Qt::transparent);
+    QPainter pixPainter(&pixmap);
+    renderer->render(&pixPainter);
+
+
+    painter.save();
+
+    //painter.drawTiledPixmap(50, 0, pixmap.width(), pixmap.height(), pixmap);;
+
+    //renderer->render(&painter);
+
+
+   QPoint point(3, 3);
+   APiece * piece = new King(false, point, this);
+   glPainter->drawPiece(&painter, piece);
+
+   painter.restore();
+  painter.end();
+
+}
+
+void BoardWidget::mousePressEvent(QMouseEvent *event)
+{
+    qDebug() << event->x() << " " << event->y();
+    qDebug() << (event->x() / (width() / 8)) << " " << (event->y() / (width() / 8));
 }
 
 void BoardWidget::retranslateSlot(void)

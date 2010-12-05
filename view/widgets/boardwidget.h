@@ -5,10 +5,15 @@
 #include <QtOpenGL/QGLWidget>
 #include <QtOpenGL/qgl.h>
 #include <QColor>
+#include <QtSvg/QtSvg>
 
 #include <QDebug>
 
 #include "../painters/painter.h"
+#include "../../model/apiece.h"
+#include "../../model/king.h"
+
+class King;
 
 /**
   * Widget po vykreslovani sachovnice za pomoci OpenGL.
@@ -48,11 +53,16 @@ protected:
       */
     virtual void paintGL(void);
 
+    /**
+      * Zpracovani kliku mysi do hraci plochy.
+      */
+    virtual void mousePressEvent(QMouseEvent * event);
+
 private:
     /**
       * Ukazatel na kreslitko.
       */
-    Painter * painter;
+    Painter * glPainter;
 
 private slots:
 

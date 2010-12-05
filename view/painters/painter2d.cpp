@@ -2,6 +2,12 @@
 
 Painter2D::Painter2D(QGLWidget * widget): APainter(widget)
 {
+
+}
+
+Painter2D::~Painter2D()
+{
+
 }
 
 void Painter2D::paintTriangle()
@@ -21,7 +27,7 @@ void Painter2D::drawChessboard()
     bool color = true;
 
     // Presun souradnic do leveho horniho rohu hodne dozadu.
-    glTranslatef(-1.0, 0.75, 0.999);
+    glTranslatef(-1.0, 0.75, 0.9);
 
     // Posun po radcich.
     for (int y = 0; y < 8; y++) {
@@ -46,4 +52,25 @@ void Painter2D::drawChessboard()
         // Posun na zacatek dalsiho radku.
         glTranslatef(-2.0, -0.25, 0.0);
     }
+}
+
+void Painter2D::drawPiece(QPainter * painter, APiece * piece)
+{
+    // Vytvori se pixmapa.
+    QPixmap pixmap(widget->width()/8, widget->height()/8);
+    pixmap.fill(Qt::transparent);
+
+    // Kreslito na pixmapu.
+    QPainter pixPainter(&pixmap);
+
+    // Vykresli se na ni svg.
+    piece->getIcon()->render(&pixPainter);
+
+    // Vykresli se na hlavni platno.
+    painter->drawTiledPixmap(piece->getCoordinate().x() * (widget->width() / 8), piece->getCoordinate().y() * (widget->height() / 8), pixmap.width(), pixmap.height(), pixmap);
+
+
+
+
+
 }

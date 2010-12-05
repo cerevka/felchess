@@ -34,6 +34,11 @@ public:
       */
     virtual void drawChessboard();
 
+    /**
+      * Vykresleni figurky.
+      */
+    virtual void drawPiece(QPainter * painter, APiece * piece);
+
 private:
 
     /**

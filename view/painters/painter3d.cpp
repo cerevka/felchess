@@ -19,3 +19,8 @@ void Painter3D::drawChessboard()
 {
 
 }
+
+void Painter3D::drawPiece(QPainter * painter, APiece * piece)
+{
+
+}

@@ -26,3 +26,8 @@ void Painter::drawChessboard()
 {
     painter->drawChessboard();
 }
+
+void Painter::drawPiece(QPainter * painter, APiece * piece)
+{
+    this->painter->drawPiece(painter, piece);
+}

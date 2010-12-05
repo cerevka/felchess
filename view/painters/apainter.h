@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QtOpenGL>
 
+#include "../../model/apiece.h"
+
 /**
   * Abstraktni trida specifikujici rozhrani vsech kreslitek.
   */
@@ -30,6 +32,11 @@ public:
       * Vykresleni sachovnice.
       */
     virtual void drawChessboard() = 0;
+
+    /**
+      * Vykresleni figurky.
+      */
+    virtual void drawPiece(QPainter * painter, APiece * piece) = 0;
 
 protected:
 

@@ -14,6 +14,11 @@ public:
     virtual void paintTriangle();
 
     virtual void drawChessboard();
+
+    /**
+      * Vykresleni figurky.
+      */
+    virtual void drawPiece(QPainter * painter, APiece * piece);
 };
 
 #endif // PAINTER3D_H

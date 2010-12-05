@@ -3,7 +3,7 @@
 CenterWidget::CenterWidget(QWidget *parent) : QWidget(parent)
 {
     // Pripravi se hlavni layout centralniho widgetu.
-    layout = new QHBoxLayout();
+    layout = new QHBoxLayout();    
 
     // Pripravi se layout nalevo.
     boardWidget = new BoardWidget(this);

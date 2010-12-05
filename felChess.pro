@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += opengl
+QT += opengl svg
 
 TARGET = felChess
 CONFIG   += console
@@ -27,7 +27,9 @@ SOURCES += main.cpp \
     view/widgets/centerwidget.cpp \
     view/painters/painter.cpp \
     view/painters/painter2d.cpp \
-    view/painters/painter3d.cpp
+    view/painters/painter3d.cpp \
+    model/king.cpp \
+    model/apiece.cpp
 
 HEADERS += \
     model/chessboard.h \
@@ -42,7 +44,9 @@ HEADERS += \
     view/painters/painter.h \
     view/painters/apainter.h \
     view/painters/painter2d.h \
-    view/painters/painter3d.h
+    view/painters/painter3d.h \
+    model/apiece.h \
+    model/king.h
 
 RESOURCES += \
     resource.qrc
