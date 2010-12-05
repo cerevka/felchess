@@ -17,17 +17,17 @@ public:
     /**
       * Vytvoreni kreslitka. Rozhoduje o volbe implementace.
       */
-    Painter(QGLWidget * widget, Mode mode);
+    explicit Painter(QGLWidget * widget, Mode mode);
 
     /**
       * Zniceni kreslitka a konkretni instance kreslitka.
       */
-    ~Painter();
+    virtual ~Painter();
 
     /**
       * Kresleni trojuhlenika.
       */
-    void paintTriangle();
+    virtual void paintTriangle();
 
 private:
 

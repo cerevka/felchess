@@ -6,12 +6,12 @@
 class Painter3D : public APainter
 {
 public:
-    Painter3D(QGLWidget * widget);
+    explicit Painter3D(QGLWidget * widget);
 
     /**
       * Kresleni trojuhlenika.
       */
-    void paintTriangle();
+    virtual void paintTriangle();
 };
 
 #endif // PAINTER3D_H

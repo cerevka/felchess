@@ -15,6 +15,8 @@ BoardWidget::BoardWidget(QWidget *parent): QGLWidget(parent)
 
 BoardWidget::~BoardWidget(void)
 {
+    // Znici se kreslitko vytvorene pri inicializaci OpenGL.
+    delete painter;
 
 }
 
@@ -28,6 +30,10 @@ void BoardWidget::initializeGL(void)
 
     // Vymazani bufferu.
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    // Vytvori se kreslitko.
+    painter = new Painter(this, Painter::MODE_2D);
+
 }
 
 void BoardWidget::resizeGL(int width, int height)
@@ -55,19 +61,7 @@ void BoardWidget::paintGL(void)
     // ... se vynuluje na jednotkovou.
     glLoadIdentity();
 
-    // Vytvori se kreslitko.
-    Painter painter(this, Painter::MODE_3D);
-
-    painter.paintTriangle();
-
-    /*
-    glBegin(GL_TRIANGLES);
-    qglColor(QColor::fromRgb(100, 23, 120));
-    glVertex3f(-1.0, -1.0, -1.0);
-    glVertex3f(1.0, -1.0, -1.0);
-    glVertex3f(0.0, 1.0, -1.0);
-    glEnd();
-    */
+    painter->paintTriangle();
 }
 
 void BoardWidget::retranslateSlot(void)

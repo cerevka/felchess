@@ -48,6 +48,12 @@ protected:
       */
     virtual void paintGL(void);
 
+private:
+    /**
+      * Ukazatel na kreslitko.
+      */
+    Painter * painter;
+
 private slots:
 
     /**
