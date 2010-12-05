@@ -28,6 +28,4 @@ void InfoWidget::retranslateSlot(void)
     setTabText(0, tr("historyTab"));
     setTabText(1, tr("scoreTab"));
     setTabText(2, tr("figureTab"));
-
-
 }

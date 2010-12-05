@@ -8,6 +8,8 @@
 
 #include <QDebug>
 
+#include "../painters/painter.h"
+
 /**
   * Widget po vykreslovani sachovnice za pomoci OpenGL.
   */

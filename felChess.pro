@@ -24,7 +24,10 @@ SOURCES += main.cpp \
     view/widgets/boardwidget.cpp \
     view/widgets/infowidget.cpp \
     view/widgets/chatwidget.cpp \
-    view/widgets/centerwidget.cpp
+    view/widgets/centerwidget.cpp \
+    view/painters/painter.cpp \
+    view/painters/painter2d.cpp \
+    view/painters/painter3d.cpp
 
 HEADERS += \
     model/chessboard.h \
@@ -35,7 +38,11 @@ HEADERS += \
     view/widgets/boardwidget.h \
     view/widgets/infowidget.h \
     view/widgets/chatwidget.h \
-    view/widgets/centerwidget.h
+    view/widgets/centerwidget.h \
+    view/painters/painter.h \
+    view/painters/apainter.h \
+    view/painters/painter2d.h \
+    view/painters/painter3d.h
 
 RESOURCES += \
     resource.qrc

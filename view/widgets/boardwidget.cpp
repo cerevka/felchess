@@ -55,12 +55,19 @@ void BoardWidget::paintGL(void)
     // ... se vynuluje na jednotkovou.
     glLoadIdentity();
 
+    // Vytvori se kreslitko.
+    Painter painter(this, Painter::MODE_3D);
+
+    painter.paintTriangle();
+
+    /*
     glBegin(GL_TRIANGLES);
     qglColor(QColor::fromRgb(100, 23, 120));
     glVertex3f(-1.0, -1.0, -1.0);
     glVertex3f(1.0, -1.0, -1.0);
     glVertex3f(0.0, 1.0, -1.0);
     glEnd();
+    */
 }
 
 void BoardWidget::retranslateSlot(void)

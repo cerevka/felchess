@@ -1,0 +1,38 @@
+#ifndef APAINTER_H
+#define APAINTER_H
+
+#include <QObject>
+#include <QtOpenGL>
+
+/**
+  * Abstraktni trida specifikujici rozhrani vsech kreslitek.
+  */
+class APainter : public QObject
+{
+    Q_OBJECT
+
+public:
+
+    /**
+      * Vsechna kreslitka musi volat kontruktor predka a predat
+      * mu odkaz na kreslici widget.
+      */
+    explicit APainter(QGLWidget * widget) {
+        this->widget = widget;
+    }
+
+    /**
+      * Kresleni trojuhlenika.
+      */
+    virtual void paintTriangle() = 0;
+
+protected:
+
+    /**
+      * Ukazatel na kreslici widget.
+      */
+    QGLWidget * widget;
+
+};
+
+#endif // APAINTER_H
