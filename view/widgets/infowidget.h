@@ -24,6 +24,23 @@ public:
       */
     virtual ~InfoWidget();
 
+private:
+
+    /**
+      * Zalozka s historii tahu.
+      */
+    QWidget * historyTab;
+
+    /**
+      * Zalozka se scorem.
+      */
+    QWidget * scoreTab;
+
+    /**
+      * Zalozka s vyrazenymi figurami.
+      */
+    QWidget * figureTab;
+
 private slots:
 
     /**

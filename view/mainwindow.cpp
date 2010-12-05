@@ -20,6 +20,10 @@ MainWindow::MainWindow(QWidget * parent) : QMainWindow(parent)
 
 MainWindow::~MainWindow(void)
 {
+    // Odstrani se kolekce tlacitek pro prepinani jazyku, jelikoz
+    // to neobstara QT memory management.
+    // Prvky v nem ovsem jiz uvolni samotne QT.
+    delete languageActList;
 
 }
 

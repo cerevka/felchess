@@ -2,9 +2,11 @@
 
 ChatWidget::ChatWidget(QWidget *parent) : QWidget(parent)
 {
-    layout = new QVBoxLayout(this);
+    layout = new QVBoxLayout();
 
     setMinimumSize(250, 200);
+
+    // Vlastnici prvku se nastavi automaticky pri addLayout a addWidget.
 
     chatView = new QTextEdit();
     chatView->setReadOnly(true);
@@ -16,8 +18,11 @@ ChatWidget::ChatWidget(QWidget *parent) : QWidget(parent)
     sendButton = new QPushButton();
     buttonLayout->addWidget(sendButton);
 
+    // Layout s tlacitky se zaradi do hlavniho layotu a re-parentuji
+    // se tak vsechny jeho prvky.
     layout->addLayout(buttonLayout);
 
+    // Hlavni layout se nastavi a vlastni ho widget.
     setLayout(layout);
 
     // Propoji se signal na preklad s hlavnim oknem.
@@ -26,10 +31,6 @@ ChatWidget::ChatWidget(QWidget *parent) : QWidget(parent)
 
 ChatWidget::~ChatWidget(void)
 {
-    delete chatView;
-    delete messageEdit;
-    delete sendButton;
-    delete buttonLayout;
 
 }
 
