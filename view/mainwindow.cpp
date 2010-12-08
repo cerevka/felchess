@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget * parent) : QMainWindow(parent)
     CenterWidget * centerWidget = new CenterWidget(this);
     setCentralWidget(centerWidget);
 
-    resize(this->sizeHint());
+    resize(sizeHint());
 
     // Propoji se signal na preklad.
     connect(this, SIGNAL(retranslateSignal()), this, SLOT(retranslateSlot()));

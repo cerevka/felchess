@@ -7,13 +7,14 @@
 
 #include <QDebug>
 
+#include "../painter.h"
 #include "../../model/apiece.h"
 #include "../../model/king.h"
 
 class King;
 
 /**
-  * Widget po vykreslovani sachovnice za pomoci OpenGL.
+  * Widget po vykreslovani hraci plochy..
   */
 class BoardWidget : public QWidget
 {
@@ -21,10 +22,10 @@ class BoardWidget : public QWidget
 public:
 
     /**
-      * Vytvoreni noveho OpenGL widgetu pro herni plochu.
+      * Vytvoreni noveho widgetu pro herni plochu.
       * @param *parent Ukazatel na rodice/vlastnika.
       */
-    explicit BoardWidget(QWidget *parent = 0);
+    explicit BoardWidget(QWidget * parent = 0);
 
     /**
       * Zniceni OpenGL widgetu.
@@ -36,22 +37,28 @@ protected:
 
     /**
       * Prestineni funkce zmeny velikosti.
-      * @param width Nova sirka widgetu.
-      * @param height Nova vyska widgetu.
+      * @param event Udalost o zmene velikosti.
       */
-    virtual void resize(int width, int height);
+    virtual void resizeEvent(QResizeEvent * event);
 
     /**
       * Prestineni funkce na kresleni na widget.
+      * @param event Udalost o prekresleni.
       */
-    virtual void paint(void);
+    virtual void paintEvent(QPaintEvent * event);
 
     /**
       * Zpracovani kliku mysi do hraci plochy.
+      * @param event Udalost o kliku mysi.
       */
     virtual void mousePressEvent(QMouseEvent * event);
 
 private:
+
+    /**
+      * Kreslitko na platno.
+      */
+    Painter painter;
 
 private slots:
 

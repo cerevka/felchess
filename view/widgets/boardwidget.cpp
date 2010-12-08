@@ -1,8 +1,8 @@
 #include "boardwidget.h"
 
 BoardWidget::BoardWidget(QWidget *parent): QWidget(parent)
-{
-        // Nastaveni velikosti widgetu.
+{    
+    // Nastaveni velikosti widgetu.
     setMinimumSize(400, 400);
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
@@ -15,23 +15,33 @@ BoardWidget::~BoardWidget(void)
 
 }
 
-void BoardWidget::resize(int width, int height)
+void BoardWidget::resizeEvent(QResizeEvent * event)
 {
-    int side = qMin(width, height);   
-
-    //resize(side, side);
+    int side = qMin(event->size().width(), event->size().height());
+    resize(side, side);
 }
 
-void BoardWidget::paint(void)
+void BoardWidget::paintEvent(QPaintEvent * event)
 {
+    painter.begin(this);
+    painter.setViewport(0, 0, width()-1, height()-1);
 
+    painter.drawChessboard();
 
+    painter.end();
 }
 
 void BoardWidget::mousePressEvent(QMouseEvent *event)
 {
-    qDebug() << event->x() << " " << event->y();
-    qDebug() << (event->x() / (width() / 8)) << " " << (event->y() / (width() / 8));
+    int size = width() / 8.3;
+    // Posun x kvuli levemu pruhu vedle sachovnice.
+    int x = event->x() - size / 3;
+    int y = event->y();
+
+    if (x > 0 && y < 8*size) {
+       qDebug() << "x: " << x << " y: " << y;
+       qDebug() << "polex: " << x / size << " poley: " << y / size;
+    }
 }
 
 void BoardWidget::retranslateSlot(void)

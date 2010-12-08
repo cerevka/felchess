@@ -26,7 +26,8 @@ SOURCES += main.cpp \
     view/widgets/chatwidget.cpp \
     view/widgets/centerwidget.cpp \
     model/king.cpp \
-    model/apiece.cpp
+    model/apiece.cpp \
+    view/painter.cpp
 
 HEADERS += \
     model/chessboard.h \
@@ -43,7 +44,8 @@ HEADERS += \
     view/painters/painter2d.h \
     view/painters/painter3d.h \
     model/apiece.h \
-    model/king.h
+    model/king.h \
+    view/painter.h
 
 RESOURCES += \
     resource.qrc
