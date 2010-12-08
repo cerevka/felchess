@@ -25,9 +25,6 @@ SOURCES += main.cpp \
     view/widgets/infowidget.cpp \
     view/widgets/chatwidget.cpp \
     view/widgets/centerwidget.cpp \
-    view/painters/painter.cpp \
-    view/painters/painter2d.cpp \
-    view/painters/painter3d.cpp \
     model/king.cpp \
     model/apiece.cpp
 

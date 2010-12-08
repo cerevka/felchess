@@ -6,6 +6,7 @@
 
 class MainWindow;
 
+
 /**
   * Specialni trida udrzujici ukazatele na singletonove tridy.
   */

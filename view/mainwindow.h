@@ -1,13 +1,16 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+class Globals;
+
 #include <QMainWindow>
 #include <QtGui>
 #include <QDir>
 #include <QStringList>
-#include "view/widgets/centerwidget.h"
 
 #include "../globals.h"
+#include "view/widgets/centerwidget.h"
+
 
 
 /**
