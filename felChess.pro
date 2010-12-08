@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += opengl svg
+QT += svg
 
 TARGET = felChess
 CONFIG   += console

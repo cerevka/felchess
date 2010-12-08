@@ -2,14 +2,11 @@
 #define BOARDWIDGET_H
 
 #include <QWidget>
-#include <QtOpenGL/QGLWidget>
-#include <QtOpenGL/qgl.h>
 #include <QColor>
 #include <QtSvg/QtSvg>
 
 #include <QDebug>
 
-#include "../painters/painter.h"
 #include "../../model/apiece.h"
 #include "../../model/king.h"
 
@@ -18,7 +15,7 @@ class King;
 /**
   * Widget po vykreslovani sachovnice za pomoci OpenGL.
   */
-class BoardWidget : public QGLWidget
+class BoardWidget : public QWidget
 {
     Q_OBJECT
 public:
@@ -36,22 +33,18 @@ public:
 
 protected:
 
-    /**
-      * Prestineni funkce inicializace OpenGL.
-      */
-    virtual void initializeGL(void);
 
     /**
       * Prestineni funkce zmeny velikosti.
       * @param width Nova sirka widgetu.
       * @param height Nova vyska widgetu.
       */
-    virtual void resizeGL(int width, int height);
+    virtual void resize(int width, int height);
 
     /**
       * Prestineni funkce na kresleni na widget.
       */
-    virtual void paintGL(void);
+    virtual void paint(void);
 
     /**
       * Zpracovani kliku mysi do hraci plochy.
@@ -59,10 +52,6 @@ protected:
     virtual void mousePressEvent(QMouseEvent * event);
 
 private:
-    /**
-      * Ukazatel na kreslitko.
-      */
-    Painter * glPainter;
 
 private slots:
 
