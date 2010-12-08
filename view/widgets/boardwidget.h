@@ -9,9 +9,6 @@
 
 #include "../painter.h"
 #include "../../model/apiece.h"
-#include "../../model/king.h"
-
-class King;
 
 /**
   * Widget po vykreslovani hraci plochy..
@@ -59,6 +56,23 @@ private:
       * Kreslitko na platno.
       */
     Painter painter;
+
+    /**
+      * Kolekce figurek, ktere ma vykreslovat na sachovnici.
+      */
+    QList<APiece *> pieceList;
+
+    /**
+      * Vykresli vsechny figurky v kolekci.
+      */
+    void drawAllPieces(void);
+
+public slots:
+
+    /**
+      * Prida figurku do kolekce mezi vykreslovane.
+      */
+    void addPieceSlot(APiece * piece);
 
 private slots:
 

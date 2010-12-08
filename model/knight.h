@@ -1,27 +1,27 @@
-#ifndef KING_H
-#define KING_H
+#ifndef KNIGHT_H
+#define KNIGHT_H
 
 #include "apiece.h"
 
 /**
-  * Kral.
+  * Jezdec.
   */
-class King : public APiece
+class Knight : public APiece
 {
 public:
 
     /**
-      * Vytvori krale.
-      * @param color Barva krale. True = bila, false = cerna.
-      * @param coordniate Pozice krale.
+      * Vytvori jezdce.
+      * @param color Barva jezdce. True = bila, false = cerna.
+      * @param coordniate Pozice jezdce.
       * @param * parent Ukazatel na rodice.
       */
-    explicit King(bool color, QPoint & coordinate, QObject * parent = 0);
+    explicit Knight(bool color, QPoint & coordinate, QObject * parent = 0);
 
     /**
-      * Znici krale.
+      * Znici jezdce.
       */
-    virtual ~King(void);
+    virtual ~Knight(void);
 
 protected:
 
@@ -35,4 +35,4 @@ protected:
     virtual bool isMoveValid(Chessboard * chessboard, QPoint & target);
 };
 
-#endif // KING_H
+#endif // KNIGHT_H

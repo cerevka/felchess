@@ -23,10 +23,18 @@ void BoardWidget::resizeEvent(QResizeEvent * event)
 
 void BoardWidget::paintEvent(QPaintEvent * event)
 {
+    Q_UNUSED(event);
+
+    // Inicializuje se kreslitko.
     painter.begin(this);
+    painter.setRenderHint(QPainter::Antialiasing);
     painter.setViewport(0, 0, width()-1, height()-1);
 
+    // Vykresli se sachovnice.
     painter.drawChessboard();
+
+    // Vykresli se figurky.
+    drawAllPieces();
 
     painter.end();
 }
@@ -42,6 +50,20 @@ void BoardWidget::mousePressEvent(QMouseEvent *event)
        qDebug() << "x: " << x << " y: " << y;
        qDebug() << "polex: " << x / size << " poley: " << y / size;
     }
+}
+
+void BoardWidget::drawAllPieces(void)
+{
+    QListIterator<APiece *> iterator(pieceList);
+    while (iterator.hasNext()) {
+        painter.drawPiece(iterator.next());
+    }
+
+}
+
+void BoardWidget::addPieceSlot(APiece * piece)
+{
+    pieceList.append(piece);
 }
 
 void BoardWidget::retranslateSlot(void)

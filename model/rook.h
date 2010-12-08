@@ -1,27 +1,27 @@
-#ifndef KING_H
-#define KING_H
+#ifndef ROOK_H
+#define ROOK_H
 
 #include "apiece.h"
 
 /**
-  * Kral.
+  * Vez.
   */
-class King : public APiece
+class Rook : public APiece
 {
 public:
 
     /**
-      * Vytvori krale.
-      * @param color Barva krale. True = bila, false = cerna.
-      * @param coordniate Pozice krale.
+      * Vytvori vez.
+      * @param color Barva veze. True = bila, false = cerna.
+      * @param coordniate Pozice veze.
       * @param * parent Ukazatel na rodice.
       */
-    explicit King(bool color, QPoint & coordinate, QObject * parent = 0);
+    explicit Rook(bool color, QPoint & coordinate, QObject * parent = 0);
 
     /**
-      * Znici krale.
+      * Znici vez.
       */
-    virtual ~King(void);
+    virtual ~Rook(void);
 
 protected:
 
@@ -35,4 +35,4 @@ protected:
     virtual bool isMoveValid(Chessboard * chessboard, QPoint & target);
 };
 
-#endif // KING_H
+#endif // ROOK_H

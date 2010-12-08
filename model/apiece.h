@@ -5,15 +5,24 @@
 #include <QPoint>
 #include <QtSvg/QSvgRenderer>
 
+#include "chessboard.h"
+
+/**
+  * Abstraktní figurka. Obsahuje implementaci zakladnich figurek,
+  * ovsem ma i ciste virtualni metody, ktere je treba doimplementovat
+  * v jednotlivych figurkach.
+  */
 class APiece: public QObject
 {
     Q_OBJECT
 
 public:
 
-
     /**
-      * Vytvoreni figurky.
+      * Kontruktor figury.
+      * @param color Barva figurky. True = bila, false = cerna.
+      * @param coordinate Souradnice, na kterych je figurka na sachovnici.
+      * @param * parent Ukazatel na rodice.
       */
     explicit APiece(bool color, QPoint coordinate, QObject * parent = 0);
 
@@ -24,19 +33,21 @@ public:
 
     /**
       * Rozhodne, zda je tah validni.
-      * @param chessboard Sachovnice, na ktere se ma ta provest.
-      * @param target Souradnice, na ktere se ma figura presunout.
+      * @param * chessboard Sachovnice, na ktere se ma tah provest.
+      * @param target Souradnice, na kterou se ma figura presunout.
+      * @return True = tah je validni. False = tah neni validni.
       */
-    virtual bool isMoveValid(void) = 0;
+    virtual bool isMoveValid(Chessboard * chessboard, QPoint & target) = 0;
 
     /**
-      * Vrati nactou SVG ikonu k vykresleni.
-      * @return SVG pripravene k vykresleni.
+      * Vrati nactenou SVG ikonu k vykresleni.
+      * @return SVG ikona pripravena k vykresleni.
       */
     virtual QSvgRenderer * getIcon(void);
 
     /**
       * Vrati souradnice pole, na kterem je figura.
+      * @return Souřadnice figury.
       */
     virtual QPoint & getCoordinate();
 
@@ -44,7 +55,7 @@ public:
 protected:
 
     /**
-      * Barva figurky: true = bila, false = cerna.
+      * Barva figurky. True = bila, false = cerna.
       */
     bool color;
 
@@ -57,10 +68,6 @@ protected:
       * Ikona figury.
       */
     QSvgRenderer * icon;
-
-
-
-
 };
 
 #endif // APIECE_H

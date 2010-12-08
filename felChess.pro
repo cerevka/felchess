@@ -27,7 +27,12 @@ SOURCES += main.cpp \
     view/widgets/centerwidget.cpp \
     model/king.cpp \
     model/apiece.cpp \
-    view/painter.cpp
+    view/painter.cpp \
+    model/queen.cpp \
+    model/bishop.cpp \
+    model/knight.cpp \
+    model/rook.cpp \
+    model/pawn.cpp
 
 HEADERS += \
     model/chessboard.h \
@@ -45,7 +50,12 @@ HEADERS += \
     view/painters/painter3d.h \
     model/apiece.h \
     model/king.h \
-    view/painter.h
+    view/painter.h \
+    model/queen.h \
+    model/bishop.h \
+    model/knight.h \
+    model/rook.h \
+    model/pawn.h
 
 RESOURCES += \
     resource.qrc

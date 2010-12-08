@@ -6,12 +6,12 @@ King::King(bool color, QPoint &coordinate, QObject * parent): APiece(color, coor
     icon = new QSvgRenderer(iconPath, this);
 }
 
-King::~King()
+King::~King(void)
 {
 
 }
 
-bool King::isMoveValid()
+bool King::isMoveValid(Chessboard *chessboard, QPoint & target)
 {
     return false;
 }

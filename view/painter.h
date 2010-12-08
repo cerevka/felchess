@@ -2,6 +2,8 @@
 #define PAINTER_H
 
 #include <QPainter>
+#include <QDebug>
+#include "../model/apiece.h"
 
 /**
   * Kreslitko na platno.
@@ -25,6 +27,12 @@ public:
       */
     void drawChessboard(void);
 
+    /**
+      * Vykresleni figurky.
+      * @param piece Ukazatel na figurku.
+      */
+    void drawPiece(APiece * piece);
 };
+
 
 #endif // PAINTER_H

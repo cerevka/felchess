@@ -3,14 +3,26 @@
 
 #include <QObject>
 
+/**
+  * Sachovnice. Slouzi hlavne jako vyhledavaci mapa pro
+  * vyhodnocovani tahu.
+  */
 class Chessboard : QObject
 {
     Q_OBJECT
 
 public:
+
+    /**
+      * Vytvori sachovnici.
+      * @param parent Ukazatel na rodice.
+      */
     explicit Chessboard(QObject * parent = 0);
 
-    virtual ~Chessboard();
+    /**
+      * Znici sachovnici.
+      */
+    virtual ~Chessboard(void);
 };
 
 #endif // CHESSBOARD_H

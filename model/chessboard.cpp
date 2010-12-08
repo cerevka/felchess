@@ -4,7 +4,7 @@ Chessboard::Chessboard(QObject *parent) : QObject(parent)
 {
 }
 
-Chessboard::~Chessboard()
+Chessboard::~Chessboard(void)
 {
 
 }

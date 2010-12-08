@@ -6,7 +6,7 @@ APiece::APiece(bool color, QPoint coordinate, QObject * parent): QObject(parent)
     this->coordinate = coordinate;
 }
 
-APiece::~APiece()
+APiece::~APiece(void)
 {
 
 }
@@ -16,7 +16,7 @@ QSvgRenderer * APiece::getIcon(void)
     return icon;
 }
 
-QPoint & APiece::getCoordinate()
+QPoint & APiece::getCoordinate(void)
 {
     return coordinate;
 }

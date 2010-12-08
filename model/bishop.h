@@ -1,27 +1,27 @@
-#ifndef KING_H
-#define KING_H
+#ifndef BISHOP_H
+#define BISHOP_H
 
 #include "apiece.h"
 
 /**
-  * Kral.
+  * Strelec.
   */
-class King : public APiece
+class Bishop : public APiece
 {
 public:
 
     /**
-      * Vytvori krale.
-      * @param color Barva krale. True = bila, false = cerna.
-      * @param coordniate Pozice krale.
+      * Vytvori strelce.
+      * @param color Barva strelce. True = bila, false = cerna.
+      * @param coordniate Pozice strelce.
       * @param * parent Ukazatel na rodice.
       */
-    explicit King(bool color, QPoint & coordinate, QObject * parent = 0);
+    explicit Bishop(bool color, QPoint & coordinate, QObject * parent = 0);
 
     /**
-      * Znici krale.
+      * Znici strelce.
       */
-    virtual ~King(void);
+    virtual ~Bishop(void);
 
 protected:
 
@@ -35,4 +35,4 @@ protected:
     virtual bool isMoveValid(Chessboard * chessboard, QPoint & target);
 };
 
-#endif // KING_H
+#endif // BISHOP_H

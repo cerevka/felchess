@@ -3,6 +3,10 @@
 
 #include <QObject>
 
+/**
+  * Zapouzdreni serveru ci klienta pro jednotny pristup
+  * k síťovému spojení.
+  */
 class Network : QObject
 {
     Q_OBJECT
