@@ -14,7 +14,7 @@ class Globals;
 
 
 /**
-  * Hlavni okno programu, ktere zajistuje konstru GUI.
+  * Hlavni okno programu, ktere zajistuje kostru GUI.
   */
 class MainWindow : public QMainWindow
 {
@@ -24,7 +24,7 @@ public:
 
     /**
       * Vytvoreni noveho okna.
-      * @param * parent Ukazatel na rodice/vlastnika.
+      * @param * parent Ukazatel na rodice.
       */
     explicit MainWindow(QWidget * parent = 0);
 

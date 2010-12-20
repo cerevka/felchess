@@ -2,6 +2,7 @@
 #define CHESSBOARD_H
 
 #include <QObject>
+#include <QPoint>
 
 /**
   * Sachovnice. Slouzi hlavne jako vyhledavaci mapa pro
@@ -23,6 +24,8 @@ public:
       * Znici sachovnici.
       */
     virtual ~Chessboard(void);
+
+    bool isEmpty(QPoint target);
 };
 
 #endif // CHESSBOARD_H

@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QPoint>
 #include <QtSvg/QSvgRenderer>
+#include <cmath>
+
 
 #include "chessboard.h"
 

@@ -17,12 +17,12 @@ public:
       * Vytvori informacni widget.
       * @param *parent Ukazatel na rodice/vlastnika.
       */
-    explicit InfoWidget(QWidget *parent = 0);
+    explicit InfoWidget(QWidget * parent = 0);
 
     /**
       * Znici informacni widget.
       */
-    virtual ~InfoWidget();
+    virtual ~InfoWidget(void);
 
 private:
 

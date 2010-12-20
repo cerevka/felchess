@@ -8,6 +8,14 @@ BoardWidget::BoardWidget(QWidget *parent): QWidget(parent)
 
     // Propoji se signal na preklad s hlavnim oknem.
     connect(parent->parent(), SIGNAL(retranslateSignal()), this, SLOT(retranslateSlot()));
+
+    QPoint point(5,6);
+    APiece * piece = new Knight(true, point);
+    pieceList.append(piece);
+
+    QPoint point1(3,2);
+    APiece * piece1 = new Knight(false, point1);
+    pieceList.append(piece1);
 }
 
 BoardWidget::~BoardWidget(void)

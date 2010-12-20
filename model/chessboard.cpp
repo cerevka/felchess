@@ -8,3 +8,7 @@ Chessboard::~Chessboard(void)
 {
 
 }
+
+bool Chessboard::isEmpty(QPoint target) {
+    return true;
+}

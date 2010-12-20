@@ -13,5 +13,14 @@ Knight::~Knight(void)
 
 bool Knight::isMoveValid(Chessboard *chessboard, QPoint & target)
 {
-    return false;
+    bool allow = false;
+
+    // Podminka overujici validitu tahu dle pravidel.
+    if ((abs(coordinate.x() - target.x()) == 1 && abs(coordinate.y() - target.y()) == 2) ||
+        (abs(coordinate.x() - target.x()) == 2 && abs(coordinate.y() - target.y()) == 1))
+    {
+        allow = true;
+    }
+
+    return allow;
 }

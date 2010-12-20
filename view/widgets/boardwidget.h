@@ -7,8 +7,11 @@
 
 #include <QDebug>
 
+#include <QPoint>
+
 #include "../painter.h"
 #include "../../model/apiece.h"
+#include "../../model/knight.h"
 
 /**
   * Widget po vykreslovani hraci plochy..

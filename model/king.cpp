@@ -13,5 +13,12 @@ King::~King(void)
 
 bool King::isMoveValid(Chessboard *chessboard, QPoint & target)
 {
-    return false;
+    bool allow = false;
+
+    // Podminka overujici validitu tahu podle pravidel.
+    if (abs(coordinate.x() - target.x()) < 2 && abs(coordinate.y() - target.y()) < 2)
+    {
+        allow = true;
+    }
+    return allow;
 }
