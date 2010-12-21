@@ -5,11 +5,13 @@
 #include <QFile>
 
 #include "globals.h"
+#include "view/mainwindow.h"
+#include "controller/game/game.h"
 
 // Nadefinovani referenci ze tridy Globals.
 QApplication * Globals::application = NULL;
-MainWindow * Globals::mainWindow = NULL;
 QSettings * Globals::settings = NULL;
+Game * Game::game = NULL;
 
 /**
   * Vstupni bod do systemu.
@@ -36,15 +38,18 @@ int main(int argc, char *argv[])
     translator.load(":/lang/felchess_" + Globals::settings->value("language/defaultLanguage").toString() + ".qm");
     app.installTranslator(&translator);
 
+    // Inicializuje se vstupni bod kontroleru.
+    Game * game = Game::getInstance();
 
     // Vytvori se okno aplikace.
-    Globals::mainWindow = new MainWindow();
-    Globals::mainWindow->show();
+    MainWindow * mainWindow = new MainWindow();
+    mainWindow->show();
 
     // Spusteni Qt.
     return app.exec();
 
     // Uvolneni pameti alokovane ve staticke tride Globals.
-    //delete Globals::settings;
-    delete Globals::mainWindow;
+    delete Globals::settings;
+    delete game;
+    delete mainWindow;
 }

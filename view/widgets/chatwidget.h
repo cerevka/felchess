@@ -2,8 +2,6 @@
 #define CHATWIDGET_H
 
 #include <QtGui>
-#include <QWidget>
-
 
 /**
   * Chatovaci widget majici na starosti komunikaci mezi hraci,

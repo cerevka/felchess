@@ -1,17 +1,12 @@
 #ifndef BOARDWIDGET_H
 #define BOARDWIDGET_H
 
-#include <QWidget>
-#include <QColor>
+#include <QtGui>
 #include <QtSvg/QtSvg>
-
-#include <QDebug>
-
 #include <QPoint>
 
 #include "../painter.h"
 #include "../../model/apiece.h"
-#include "../../model/knight.h"
 
 /**
   * Widget po vykreslovani hraci plochy..
@@ -53,6 +48,10 @@ protected:
       */
     virtual void mousePressEvent(QMouseEvent * event);
 
+signals:
+
+    void boardClickedSignal(QPoint point);
+
 private:
 
     /**
@@ -70,12 +69,6 @@ private:
       */
     void drawAllPieces(void);
 
-public slots:
-
-    /**
-      * Prida figurku do kolekce mezi vykreslovane.
-      */
-    void addPieceSlot(APiece * piece);
 
 private slots:
 
@@ -83,6 +76,15 @@ private slots:
       * Prelozi widget.
       */
     void retranslateSlot(void);
+
+    /**
+      * Prida figurku do kolekce mezi vykreslovane.
+      */
+    void addPieceSlot(APiece * piece);
+
+    void updateGUISlot(void);
+
+    void removePieceSlot(APiece * piece);
 
 
 

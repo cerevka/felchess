@@ -2,7 +2,6 @@
 #define CENTERWIDGET_H
 
 #include <QtGui>
-#include <QWidget>
 
 #include "view/widgets/boardwidget.h"
 #include "view/widgets/infowidget.h"

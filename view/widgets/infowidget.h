@@ -1,7 +1,7 @@
 #ifndef INFOWIDGET_H
 #define INFOWIDGET_H
 
-#include <QTabWidget>
+#include <QtGui>
 
 
 /**

@@ -15,6 +15,13 @@ MainWindow::MainWindow(QWidget * parent) : QMainWindow(parent)
     // Propoji se signal na preklad.
     connect(this, SIGNAL(retranslateSignal()), this, SLOT(retranslateSlot()));
 
+    // Propoji se akce volane z window s kontrolerem.
+    connect(this, SIGNAL(startGameSignal(bool,QString,QString)), Game::getInstance(), SLOT(startGameSlot(bool,QString,QString)));
+    connect(Game::getInstance(), SIGNAL(addPieceSignal(APiece*)), this, SLOT(addPieceSlot(APiece*)));
+    connect(Game::getInstance(), SIGNAL(updateGUISignal()), this, SLOT(updateGUISlot()));
+    connect(this, SIGNAL(boardClickedSignal(QPoint)), Game::getInstance(), SLOT(boardClickedSlog(QPoint)));
+    connect(Game::getInstance(), SIGNAL(removePieceSignal(APiece*)), this, SLOT(removePieceSlot(APiece*)));
+
     emit retranslateSignal();
 }
 
@@ -146,6 +153,9 @@ void MainWindow::retranslateSlot(void) {
 
 void MainWindow::newGameSlot(void)
 {
+    NewGameDialog  dialog(this);
+    dialog.exec();
+
 
 }
 
@@ -180,5 +190,55 @@ void MainWindow::showAboutSlot(void)
 
 void MainWindow::showHelpSlot(void)
 {
+
+}
+
+void MainWindow::startGameSlot(bool _player, QString _ip, QString _port)
+{
+    bool result = emit startGameSignal(_player, _ip, _port);
+
+    if (result == false)
+    {
+        QMessageBox msgBox;
+        msgBox.setText(tr("msgBox:gameExists"));
+        msgBox.setWindowTitle(tr("msgBox:gameExists"));
+        msgBox.setInformativeText(tr("msgBox:whatDo"));
+        msgBox.setIcon(QMessageBox::Warning);
+
+        msgBox.addButton(tr("msgBox:discartAndNew"), QMessageBox::RejectRole);
+        msgBox.addButton(tr("msgBox:dontDiscartAndContinue"), QMessageBox::AcceptRole);
+
+
+        if(msgBox.exec() == QMessageBox::AcceptRole)
+        {
+            // Zahod hru a zaloz novou.
+            qDebug() << "Zaloz novou.";
+        }
+        else {
+            // Nezahazuj a pokracuj ve stavajici.
+            qDebug() << "Pokracuj.";
+        }
+    }
+
+}
+
+void MainWindow::addPieceSlot(APiece *piece)
+{
+    emit addPieceSignal(piece);
+}
+
+void MainWindow::updateGUISlot(void)
+{
+    emit updateGUISignal();
+}
+
+void MainWindow::boardClickedSlot(QPoint point)
+{
+    emit boardClickedSignal(point);
+}
+
+void MainWindow::removePieceSlot(APiece *piece)
+{
+    emit removePieceSignal(piece);
 
 }

@@ -8,14 +8,10 @@ BoardWidget::BoardWidget(QWidget *parent): QWidget(parent)
 
     // Propoji se signal na preklad s hlavnim oknem.
     connect(parent->parent(), SIGNAL(retranslateSignal()), this, SLOT(retranslateSlot()));
-
-    QPoint point(5,6);
-    APiece * piece = new Knight(true, point);
-    pieceList.append(piece);
-
-    QPoint point1(3,2);
-    APiece * piece1 = new Knight(false, point1);
-    pieceList.append(piece1);
+    connect(parent->parent(), SIGNAL(addPieceSignal(APiece*)), this, SLOT(addPieceSlot(APiece*)));
+    connect(parent->parent(), SIGNAL(updateGUISignal()), this, SLOT(updateGUISlot()));
+    connect(this, SIGNAL(boardClickedSignal(QPoint)), parent->parent(), SLOT(boardClickedSlot(QPoint)));
+    connect(parent->parent(), SIGNAL(removePieceSignal(APiece*)), this, SLOT(removePieceSlot(APiece*)));
 }
 
 BoardWidget::~BoardWidget(void)
@@ -55,9 +51,10 @@ void BoardWidget::mousePressEvent(QMouseEvent *event)
     int y = event->y();
 
     if (x > 0 && y < 8*size) {
-       qDebug() << "x: " << x << " y: " << y;
-       qDebug() << "polex: " << x / size << " poley: " << y / size;
+       emit boardClickedSignal(QPoint (x/size, y/size));
     }
+
+
 }
 
 void BoardWidget::drawAllPieces(void)
@@ -78,3 +75,14 @@ void BoardWidget::retranslateSlot(void)
 {
 
 }
+
+void BoardWidget::updateGUISlot(void)
+{
+    update();
+}
+
+void BoardWidget::removePieceSlot(APiece *piece){
+    qDebug() << "Odstranuji figuru.";
+    pieceList.removeOne(piece);
+}
+

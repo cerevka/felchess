@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += svg
+QT += svg network
 
 TARGET = felChess
 CONFIG   += console
@@ -32,7 +32,11 @@ SOURCES += main.cpp \
     model/bishop.cpp \
     model/knight.cpp \
     model/rook.cpp \
-    model/pawn.cpp
+    model/pawn.cpp \
+    view/dialogs/newgamedialog.cpp \
+    controller/network/networkinterface.cpp \
+    controller/network/server.cpp \
+    controller/network/client.cpp
 
 HEADERS += \
     model/chessboard.h \
@@ -55,7 +59,11 @@ HEADERS += \
     model/bishop.h \
     model/knight.h \
     model/rook.h \
-    model/pawn.h
+    model/pawn.h \
+    view/dialogs/newgamedialog.h \
+    controller/network/networkinterface.h \
+    controller/network/server.h \
+    controller/network/client.h
 
 RESOURCES += \
     resource.qrc

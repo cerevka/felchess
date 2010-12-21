@@ -2,6 +2,9 @@
 #define BISHOP_H
 
 #include "apiece.h"
+#include "chessboard.h"
+
+class Chessboard;
 
 /**
   * Strelec.
@@ -16,7 +19,7 @@ public:
       * @param coordniate Pozice strelce.
       * @param * parent Ukazatel na rodice.
       */
-    explicit Bishop(bool color, QPoint & coordinate, QObject * parent = 0);
+    explicit Bishop(bool color, QPoint coordinate, QObject * parent = 0);
 
     /**
       * Znici strelce.

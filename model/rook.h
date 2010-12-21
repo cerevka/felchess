@@ -2,6 +2,9 @@
 #define ROOK_H
 
 #include "apiece.h"
+#include "chessboard.h"
+
+class Chessboard;
 
 /**
   * Vez.
@@ -16,7 +19,7 @@ public:
       * @param coordniate Pozice veze.
       * @param * parent Ukazatel na rodice.
       */
-    explicit Rook(bool color, QPoint & coordinate, QObject * parent = 0);
+    explicit Rook(bool color, QPoint coordinate, QObject * parent = 0);
 
     /**
       * Znici vez.

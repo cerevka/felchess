@@ -2,6 +2,9 @@
 #define KNIGHT_H
 
 #include "apiece.h"
+#include "chessboard.h"
+
+class Chessboard;
 
 /**
   * Jezdec.
@@ -16,7 +19,7 @@ public:
       * @param coordniate Pozice jezdce.
       * @param * parent Ukazatel na rodice.
       */
-    explicit Knight(bool color, QPoint & coordinate, QObject * parent = 0);
+    explicit Knight(bool color, QPoint coordinate, QObject * parent = 0);
 
     /**
       * Znici jezdce.

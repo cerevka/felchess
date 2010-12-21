@@ -1,15 +1,16 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-class Globals;
-
-#include <QMainWindow>
 #include <QtGui>
 #include <QDir>
 #include <QStringList>
 
+#include <QDebug>
+
 #include "../globals.h"
 #include "view/widgets/centerwidget.h"
+#include "dialogs/newgamedialog.h"
+#include "controller/game/game.h"
 
 
 
@@ -68,6 +69,16 @@ signals:
       */
     void retranslateSignal(void);
 
+    bool startGameSignal(bool player, QString ip, QString port);
+
+    void addPieceSignal(APiece * piece);
+
+    void updateGUISignal(void);
+
+    void boardClickedSignal(QPoint point);
+
+    void removePieceSignal(APiece *piece);
+
 private slots:
 
     /**
@@ -105,6 +116,24 @@ private slots:
       * Slot, ktery zpracovava zobrazeni napovedy.
       */
     void showHelpSlot(void);
+
+    /**
+      * Zpracovava pridani figury.
+      */
+    void addPieceSlot(APiece * piece);
+
+    void updateGUISlot(void);
+
+    void removePieceSlot(APiece * piece);
+
+public slots:
+
+    /**
+      * Slot zpracovajici vystup ze subkomponenty a predavajici ho hre.
+      */
+    void startGameSlot(bool _player, QString _ip, QString _port);
+
+    void boardClickedSlot(QPoint point);
 
 };
 

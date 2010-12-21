@@ -2,6 +2,10 @@
 #define PAWN_H
 
 #include "apiece.h"
+#include "chessboard.h"
+#include <QDebug>
+
+class Chessboard;
 
 /**
   * Pesak.
@@ -16,7 +20,7 @@ public:
       * @param coordniate Pozice pesaka.
       * @param * parent Ukazatel na rodice.
       */
-    explicit Pawn(bool color, QPoint & coordinate, QObject * parent = 0);
+    explicit Pawn(bool color, QPoint coordinate, QObject * parent = 0);
 
     /**
       * Znici pesaka.

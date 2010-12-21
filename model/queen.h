@@ -2,6 +2,9 @@
 #define QUEEN_H
 
 #include "apiece.h"
+#include "chessboard.h"
+
+class Chessboard;
 
 /**
   * Kralovna.
@@ -16,7 +19,7 @@ public:
       * @param coordniate Pozice kralovny.
       * @param * parent Ukazatel na rodice.
       */
-    explicit Queen(bool color, QPoint & coordinate, QObject * parent = 0);
+    explicit Queen(bool color, QPoint coordinate, QObject * parent = 0);
 
     /**
       * Znici kralovnu.

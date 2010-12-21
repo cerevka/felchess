@@ -1,6 +1,6 @@
 #include "rook.h"
 
-Rook::Rook(bool color, QPoint &coordinate, QObject * parent): APiece(color, coordinate, parent)
+Rook::Rook(bool color, QPoint coordinate, QObject * parent): APiece(color, coordinate, parent)
 {
     QString iconPath = QString(":/pieces/").append((color)?("white"):("black")).append("/rook");
     icon = new QSvgRenderer(iconPath, this);
@@ -21,44 +21,14 @@ bool Rook::isMoveValid(Chessboard *chessboard, QPoint & target)
 
         // Je treba overit, zda v ceste nestoji prekazky.
 
-        // Konstroluje se vodorovny smer.
-        if (coordinate.x() == coordinate.y())
+        // Kontroluje vodorovny smer.
+        if (coordinate.x() == target.x())
         {
             if (coordinate.y() < target.y())
             {
-                // Smerem doprava.
                 for (int i = coordinate.y() + 1; i < target.y(); i++)
                 {
                     if (chessboard->isEmpty(QPoint (coordinate.x(), i)) == false)
-                    {
-                        block = false;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                // Smerem doleva.
-                for (int i = coordinate.y() - 1; i > target.y(); i--)
-                {
-                    if (chessboard->isEmpty(QPoint (coordinate.x(), i)) == false)
-                    {
-                        block = false;
-                        break;
-                    }
-                }
-            }
-        }
-
-        // Kontroluje se svisly smer.
-        if (coordinate.y() == target.y())
-        {
-            if (coordinate.x() < target.x())
-            {
-                // Smerem dolu.
-                for (int i = coordinate.x() + 1; i < target.x(); i++)
-                {
-                    if (chessboard->isEmpty(QPoint (i, coordinate.y())) == false)
                     {
                         block = true;
                         break;
@@ -67,17 +37,46 @@ bool Rook::isMoveValid(Chessboard *chessboard, QPoint & target)
             }
             else
             {
-                // Smerem nahoru.
-                for (int i = coordinate.x() - 1; i > target.x(); i--)
+                for (int i = coordinate.y() - 1; i > target.y(); i--)
                 {
-                    if (chessboard->isEmpty(QPoint (i, coordinate.y())) == false)
+                    if (chessboard->isEmpty(QPoint (coordinate.x(), i)) == false)
                     {
-                        block = false;
+                        block = true;
                         break;
                     }
                 }
             }
         }
+
+        // Kontroluje svisly smer.
+        if (coordinate.y() == target.y())
+        {
+            if (coordinate.x() < target.x())
+            {
+                for (int i = coordinate.x() + 1; i < target.x(); i++)
+                {
+                    if (chessboard->isEmpty(QPoint (i, coordinate.y())) == false)
+                    {
+                        block = true;
+                        break;
+                    }
+                }
+
+            }
+            else
+            {
+                for (int i = coordinate.x() - 1; i > target.x(); i--)
+                {
+                    if (chessboard->isEmpty(QPoint (i, coordinate.y())) == false)
+                    {
+                        block = true;
+                        break;
+                    }
+                }
+
+            }
+        }
+
 
         if (block == false)
         {

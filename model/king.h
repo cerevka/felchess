@@ -2,6 +2,9 @@
 #define KING_H
 
 #include "apiece.h"
+#include "chessboard.h"
+
+class Chessboard;
 
 /**
   * Kral.
@@ -16,7 +19,7 @@ public:
       * @param coordniate Pozice krale.
       * @param * parent Ukazatel na rodice.
       */
-    explicit King(bool color, QPoint & coordinate, QObject * parent = 0);
+    explicit King(bool color, QPoint coordinate, QObject * parent = 0);
 
     /**
       * Znici krale.

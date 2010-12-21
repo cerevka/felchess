@@ -1,13 +1,17 @@
 #ifndef APIECE_H
 #define APIECE_H
 
+
+
 #include <QObject>
 #include <QPoint>
 #include <QtSvg/QSvgRenderer>
 #include <cmath>
 
+class Chessboard;
 
-#include "chessboard.h"
+
+
 
 /**
   * Abstraktní figurka. Obsahuje implementaci zakladnich figurek,
@@ -51,7 +55,16 @@ public:
       * Vrati souradnice pole, na kterem je figura.
       * @return Souřadnice figury.
       */
-    virtual QPoint & getCoordinate();
+    QPoint & getCoordinate();
+
+    void setCoordinate(QPoint point) {
+        coordinate = point;
+    }
+
+    bool getColor()
+    {
+        return color;
+    }
 
 
 protected:

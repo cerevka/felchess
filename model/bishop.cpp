@@ -1,6 +1,6 @@
 #include "bishop.h"
 
-Bishop::Bishop(bool color, QPoint &coordinate, QObject * parent): APiece(color, coordinate, parent)
+Bishop::Bishop(bool color, QPoint coordinate, QObject * parent): APiece(color, coordinate, parent)
 {
     QString iconPath = QString(":/pieces/").append((color)?("white"):("black")).append("/bishop");
     icon = new QSvgRenderer(iconPath, this);
